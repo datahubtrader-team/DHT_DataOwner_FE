@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService, UserDetails } from '../authentication.service';
 import { HttpClient } from '@angular/common/http';
-import {RequestOptions, Request, RequestMethod} from '@angular/http';
 
 @Component({
   templateUrl: './profile.component.html'
@@ -11,12 +10,14 @@ export class ProfileComponent {
 
   page: string = "";
   response: any;
+  dd: any;
   constructor(private auth: AuthenticationService, private http: HttpClient) {}
   
   ngOnInit() {    
     this.auth.profile().subscribe(user => {
       this.details = user;
-      console.log(user);
+      //console.log(user);
+      this.dd = user;
       //console.log(user.salt);
     }, (err) => {
       console.error(err);
@@ -45,7 +46,17 @@ export class ProfileComponent {
       .subscribe((response) => {
       this.response = response;
       console.log(this.response);
+      console.log("Julian Hamm ",this.dd);
     });
     
   }
+
+  awsurl(){
+      this.http.get('/urls')
+      .subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+    });
+  }
+
 }

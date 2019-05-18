@@ -27,8 +27,16 @@
             <!-- Data: <input type="text" [(ngModel)]="page"> -->
             <button (click)="search()" type="button" class="btn btn-primary">Get HAT data</button>
 
-            <div>
+            <div *ngIf="response">
                 <p>URL: {{response.userId}}</p>
+            </div>
+
+            <!--AWS URLS-->
+            <button (click)="awsurl()" type="button" class="btn btn-primary">AWS url</button>
+
+            <div *ngIf="response">
+                <p>AWS:<a target="_blank" href="{{response[0]?.url}}">{{response[0]?.url}}</a></p>
+
             </div>
         </div>
     </div>
