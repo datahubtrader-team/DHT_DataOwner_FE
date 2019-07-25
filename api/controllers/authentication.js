@@ -19,17 +19,21 @@ module.exports.register = function(req, res) {
 
     var user = new User();
 
-    //TODO: Check if the username/HAT url and password exists
-    //TODO: Retrieve data from HAT and store it in DB
+    //TODO: Check if the username/HAT url and password exists If NOT then return 400 bad request
+
     user.name = req.body.name;
     user.email = req.body.email;
 
     console.log("This is a test " + req.body.name);
 
+    console.log("Password ============ " + req.body.password);
+
+
     user.setPassword(req.body.password);
 
+    //TODO: Validation check i.e. Valid email and number
     //Send email (and mobile number, where applicable) after registration
-    sendComms.sendCommunication(req.body.email, req.body.name);
+    //sendComms.sendCommunication(req.body.email, req.body.name);
 
     user.save(function(err) {
         var token;
@@ -38,10 +42,21 @@ module.exports.register = function(req, res) {
         res.json({
             "token": token
         });
-
+        console.log(token);
     });
 
+
 };
+
+//TODO: Retrieve profile data from HAT and store it in Owner DB
+//TODO: Call the Data provider service to call the HAT
+
+
+
+//TODO: Retrieve plugs from HAT and store it to user's record in OwnerDB
+//TODO: Call the Data provider service to call the HAT
+
+
 
 module.exports.login = function(req, res) {
 
@@ -51,9 +66,12 @@ module.exports.login = function(req, res) {
     //   });
     //   return;
     // }
-    console.log("Login " + req.body.password);
+    console.log("Login password: =========== " + req.body.password);
     passport.authenticate('local', function(err, user, info) {
         var token;
+
+	console.log(user);
+	
 
         // If Passport throws/catches an error
         if (err) {

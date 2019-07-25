@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "http://178.128.44.220:3000",
+        "target": "http://localhost:3000",
         "secure": false
     },
     "/hat": {
@@ -10,6 +10,36 @@
         "changeOrigin": true
     },
     "/urls": {
+        "target": "http://localhost:4020",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/data": {
+        "target": "http://localhost:4020",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/getoffers": {
+        "target": "http://localhost:4020",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/offerAccepted": {
+        "target": "http://localhost:4020",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/gettrades": {
+        "target": "http://localhost:4020",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/tradeAccepted": {
         "target": "http://localhost:4020",
         "secure": false,
         "logLevel": "debug",

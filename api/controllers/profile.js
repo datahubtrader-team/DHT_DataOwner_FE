@@ -15,4 +15,5 @@ module.exports.profileRead = function(req, res) {
             });
     }
     console.log("Profile " + req.payload.name);
+    console.log("Login password: =========== " + req.body.password);
 };

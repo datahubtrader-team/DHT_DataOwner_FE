@@ -38,6 +38,82 @@
                 <p>AWS:<a target="_blank" href="{{response[0]?.url}}">{{response[0]?.url}}</a></p>
 
             </div>
+
         </div>
+
+        <!--Get offers -->
+        <div class="container">
+            <h2>List of offers {{ details?.email }}</h2>
+            <!-- Data: <input type="text" [(ngModel)]="page"> -->
+            <button (click)="getOffers(details?.email)" type="button" class="btn btn-primary">GetOffers</button>
+
+            <!--<div *ngIf="response">
+                 <input [(ngModel)]="response[0].buy_data">
+            <p>{{response[3]?.offer[0].buy_data}}
+                <button (click)="acceptOffer(response[3]?.offer[0].buy_data, response[3]?.email)" type="button" class="btn btn-primary"> accept </button></p>
+        </div> -->
+
+            <!-- ################################## -->
+
+            <div class="reglist">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Num</th>
+                            <th>Offers</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="response">
+                        <tr *ngFor="let app of response; let i = index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{response[i].buy_data}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" (click)="acceptOffer(response[i].buy_data, details?.email)">Accept</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- Get trades -->
+        <div class="container">
+            <div class="row">
+                <h2>List of trades</h2>
+                <button (click)="getTrades(details?.email)" type="button" class="btn btn-primary">Get trades</button>
+
+                <!-- &&&&&&&&&&&&&&&&&&&& -->
+                <div class="reglist">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Trades</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="response">
+                            <tr *ngFor="let app of response; let i = index">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>{{response[i].buy_data}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" (click)="acceptTrade(response[i].buy_data, details?.email)">Accept</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>

@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, UserDetails } from '../authentication.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: './profile.component.html'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   details: UserDetails;
 
   page: string = "";
   response: any;
   dd: any;
+  plug: string = "";
+  email: string = "";
   constructor(private auth: AuthenticationService, private http: HttpClient) {}
   
   ngOnInit() {    
@@ -22,6 +24,7 @@ export class ProfileComponent {
     }, (err) => {
       console.error(err);
     });
+    //this.getOffers("10");
   }
 
   search(){
@@ -56,6 +59,70 @@ export class ProfileComponent {
       .subscribe((response) => {
       this.response = response;
       console.log(this.response);
+    });
+  }
+
+  getOffers(email){
+    this.http.get('/gettrades'+'?email='+email)
+      .subscribe((response) => {
+      this.response = response;
+      //console.log(this.response);
+      this.response.forEach(function(element) {
+        console.log(element);
+      });
+      console.log("Hello world " );
+    });
+  }
+
+  acceptOffer(plug, email){
+    this.http.post('/offerAccepted',{
+      "plug":plug,
+      "email":email,
+    },{headers: {
+      //'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Credentials':'true',
+      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, X-Auth-Token, Authorization',
+      "Vary":"Accept-Encoding, Origin"
+    }})
+      .subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+      // this.response.forEach(function(element) {
+      //   console.log(element);
+      // });
+      console.log("Hello world " );
+    });
+  }
+
+  getTrades(email){
+    this.http.get('/gettrades'+'?email='+email)
+      .subscribe((response) => {
+      this.response = response;
+      //console.log(this.response);
+      this.response.forEach(function(element) {
+        console.log(element);
+      });
+      console.log("Hello world " );
+    });
+  }
+
+  acceptTrade(plug, email){
+    this.http.post('/tradeAccepted',{
+      "plug":plug,
+      "email":email,
+    },{headers: {
+      //'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Credentials':'true',
+      'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, X-Auth-Token, Authorization',
+      "Vary":"Accept-Encoding, Origin"
+    }})
+      .subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+      // this.response.forEach(function(element) {
+      //   console.log(element);
+      // });
+      console.log("Hello world " );
     });
   }
 
