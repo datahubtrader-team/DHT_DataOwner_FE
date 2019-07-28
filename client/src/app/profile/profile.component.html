@@ -43,7 +43,7 @@
 
         <!--Get offers -->
         <div class="container">
-            <h2>List of offers {{ details?.email }}</h2>
+            <h2>List of offers {{ details?._id }}</h2>
             <!-- Data: <input type="text" [(ngModel)]="page"> -->
             <button (click)="getOffers(details?.email)" type="button" class="btn btn-primary">GetOffers</button>
 
@@ -59,18 +59,20 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Num</th>
+                            <!-- <th>Num</th> -->
                             <th>Offers</th>
+                            <th>value</th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="response">
+                    <tbody>
                         <tr *ngFor="let app of response; let i = index">
-                            <th scope="row">{{ i + 1 }}</th>
-                            <td>{{response[i].buy_data}}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary" (click)="acceptOffer(response[i].buy_data, details?.email)">Accept</button>
+                            <!-- <th scope="row">{{ i + 1 }}</th> -->
+                            <td *ngIf="response[i].offerAccepted == null">{{response[i].buy_data}}</td>
+                            <td *ngIf="response[i].offerAccepted == null">{{response[i].value}}</td>
+                            <td *ngIf="response[i].offerAccepted == null">
+                                <button type="button" class="btn btn-primary" (click)="acceptOffer(response[i].buy_data, details?.email); refresh()">Accept</button>
                             </td>
-                            <td>
+                            <td *ngIf="response[i].offerAccepted == null">
                                 <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
                             </td>
                         </tr>
@@ -92,18 +94,18 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Num</th>
+                                <!-- <th>Num</th> -->
                                 <th>Trades</th>
                             </tr>
                         </thead>
                         <tbody *ngIf="response">
                             <tr *ngFor="let app of response; let i = index">
-                                <th scope="row">{{ i + 1 }}</th>
-                                <td>{{response[i].buy_data}}</td>
-                                <td>
+                                <!-- <th scope="row">{{ i + 1 }}</th> -->
+                                <td *ngIf="response[i].trade == null">{{response[i].buy_data}}</td>
+                                <td *ngIf="response[i].trade == null">
                                     <button type="button" class="btn btn-primary" (click)="acceptTrade(response[i].buy_data, details?.email)">Accept</button>
                                 </td>
-                                <td>
+                                <td *ngIf="response[i].trade == null">
                                     <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
                                 </td>
                             </tr>

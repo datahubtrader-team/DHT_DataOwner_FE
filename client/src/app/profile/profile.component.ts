@@ -62,6 +62,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
   getOffers(email){
     this.http.get('/gettrades'+'?email='+email)
       .subscribe((response) => {
@@ -73,6 +74,7 @@ export class ProfileComponent implements OnInit {
       console.log("Hello world " );
     });
   }
+
 
   acceptOffer(plug, email){
     this.http.post('/offerAccepted',{
@@ -126,4 +128,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
 }
