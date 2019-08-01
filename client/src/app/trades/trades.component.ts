@@ -3,9 +3,9 @@ import { AuthenticationService, UserDetails } from '../authentication.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  templateUrl: './profile.component.html'
+  templateUrl: './trades.component.html'
 })
-export class ProfileComponent implements OnInit {
+export class TradesComponent implements OnInit {
   details: UserDetails;
 
   page: string = "";
@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
 
 
   getOffers(email){
-    this.http.get('/getoffers'+'?email='+email)
+    this.http.get('/gettrades'+'?email='+email)
       .subscribe((response) => {
       this.response = response;
       //console.log(this.response);

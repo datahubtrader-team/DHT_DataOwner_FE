@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <h1 class="form-signin-heading">Your profile</h1>
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Full name</label>
+                    <p class="form-control-static">{{ details?.name }}</p>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Email</label>
+                    <p class="form-control-static">{{ details?.email }}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Get trades -->
+        <div class="container">
+            <div class="row">
+                <h2>List of trades</h2>
+                <button (click)="getTrades(details?.email)" type="button" class="btn btn-primary">Get trades</button>
+
+                <!-- &&&&&&&&&&&&&&&&&&&& -->
+                <div class="reglist">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <!-- <th>Num</th> -->
+                                <th>Trades</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="response">
+                            <tr *ngFor="let app of response; let i = index">
+                                <!-- <th scope="row">{{ i + 1 }}</th> -->
+                                <td *ngIf="response[i].trade == 'tradeRequested'">{{response[i].buy_data}}</td>
+                                <td *ngIf="response[i].trade == 'tradeRequested'">
+                                    <button type="button" class="btn btn-primary" (click)="acceptTrade(response[i].buy_data, details?.email)">Accept</button>
+                                </td>
+                                <td *ngIf="response[i].trade == 'tradeRequested'">
+                                    <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

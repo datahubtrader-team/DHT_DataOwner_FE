@@ -84,38 +84,7 @@
         </div>
 
         <!-- Get trades -->
-        <div class="container">
-            <div class="row">
-                <h2>List of trades</h2>
-                <button (click)="getTrades(details?.email)" type="button" class="btn btn-primary">Get trades</button>
 
-                <!-- &&&&&&&&&&&&&&&&&&&& -->
-                <div class="reglist">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <!-- <th>Num</th> -->
-                                <th>Trades</th>
-                            </tr>
-                        </thead>
-                        <tbody *ngIf="response">
-                            <tr *ngFor="let app of response; let i = index">
-                                <!-- <th scope="row">{{ i + 1 }}</th> -->
-                                <td *ngIf="response[i].trade == null">{{response[i].buy_data}}</td>
-                                <td *ngIf="response[i].trade == null">
-                                    <button type="button" class="btn btn-primary" (click)="acceptTrade(response[i].buy_data, details?.email)">Accept</button>
-                                </td>
-                                <td *ngIf="response[i].trade == null">
-                                    <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-        </div>
 
     </div>
 </div>
