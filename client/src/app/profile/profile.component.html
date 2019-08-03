@@ -18,45 +18,71 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Email</label>
                     <p class="form-control-static">{{ details?.email }}</p>
+
+                    <!-- <ul>
+                        <li *ngFor="let item of mydataresponse.dataplug">
+                            <p class="form-control-static">{{ item.plug }}</p>
+                        </li>
+                    </ul> -->
                 </div>
             </div>
 
         </div>
         <div class="container">
-            <h2>HAT</h2>
+            <h2>My data</h2>
             <!-- Data: <input type="text" [(ngModel)]="page"> -->
-            <button (click)="search()" type="button" class="btn btn-primary">Get HAT data</button>
+            <button (click)="getMyHatData(details?.email)" type="button" class="btn btn-primary">Get HAT data</button>
 
-            <div *ngIf="response">
-                <p>URL: {{response.userId}}</p>
+            <!-- <p *ngIf="mydataresponse.dataplug[4].plug">{{mydataresponse.dataplug[4].plug}}</p> -->
+
+            <!-- <div *ngFor="let item of mydataresponse">
+                {{item.dataplug[item].plug}}
+            </div> -->
+
+            <div class="reglist">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <!-- <th>Num</th> -->
+                            <th>PDS data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mydataresponse.dataplug">
+                            <!-- <th scope="row">{{ i + 1 }}</th> -->
+
+                            <td *ngIf="item.plug">{{item.plug}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <!--AWS URLS-->
-            <button (click)="awsurl()" type="button" class="btn btn-primary">AWS url</button>
+            <!-- <button (click)="awsurl() " type="button " class="btn btn-primary ">AWS url</button>
 
-            <div *ngIf="response">
-                <p>AWS:<a target="_blank" href="{{response[0]?.url}}">{{response[0]?.url}}</a></p>
+            <div *ngIf="response ">
+                <p>AWS:<a target="_blank " href="{{response[0]?.url}} ">{{response[0]?.url}}</a></p>
 
-            </div>
+            </div> -->
 
         </div>
 
         <!--Get offers -->
-        <div class="container">
+        <div class="container ">
             <h2>List of offers {{ details?._id }}</h2>
-            <!-- Data: <input type="text" [(ngModel)]="page"> -->
-            <button (click)="getOffers(details?.email)" type="button" class="btn btn-primary">GetOffers</button>
+            <!-- Data: <input type="text " [(ngModel)]="page "> -->
+            <button (click)="getOffers(details?.email) " type="button " class="btn btn-primary ">GetOffers</button>
 
-            <!--<div *ngIf="response">
-                 <input [(ngModel)]="response[0].buy_data">
+            <!--<div *ngIf="response ">
+                 <input [(ngModel)]="response[0].buy_data ">
             <p>{{response[3]?.offer[0].buy_data}}
-                <button (click)="acceptOffer(response[3]?.offer[0].buy_data, response[3]?.email)" type="button" class="btn btn-primary"> accept </button></p>
+                <button (click)="acceptOffer(response[3]?.offer[0].buy_data, response[3]?.email) " type="button " class="btn btn-primary "> accept </button></p>
         </div> -->
 
             <!-- ################################## -->
 
-            <div class="reglist">
-                <table class="table table-striped">
+            <div class="reglist ">
+                <table class="table table-striped ">
                     <thead>
                         <tr>
                             <!-- <th>Num</th> -->
@@ -65,15 +91,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let app of response; let i = index">
-                            <!-- <th scope="row">{{ i + 1 }}</th> -->
-                            <td *ngIf="response[i].offerAccepted == null">{{response[i].buy_data}}</td>
-                            <td *ngIf="response[i].offerAccepted == null">{{response[i].value}}</td>
-                            <td *ngIf="response[i].offerAccepted == null">
-                                <button type="button" class="btn btn-primary" (click)="acceptOffer(response[i].buy_data, details?.email); refresh()">Accept</button>
+                        <tr *ngFor="let app of response; let i=i ndex ">
+                            <!-- <th scope="row ">{{ i + 1 }}</th> -->
+                            <td *ngIf="response[i].offerAccepted==null ">{{response[i].buy_data}}</td>
+                            <td *ngIf="response[i].offerAccepted==null ">{{response[i].value}}</td>
+                            <td *ngIf="response[i].offerAccepted==null ">
+                                <button type="button " class="btn btn-primary " (click)="acceptOffer(response[i].buy_data, details?.email); refresh() ">Accept</button>
                             </td>
-                            <td *ngIf="response[i].offerAccepted == null">
-                                <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
+                            <td *ngIf="response[i].offerAccepted==null ">
+                                <button type="button " class="btn btn-danger " (click)="onDelete(i) ">Decline</button>
                             </td>
                         </tr>
                     </tbody>

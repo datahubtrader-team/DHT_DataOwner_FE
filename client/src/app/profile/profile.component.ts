@@ -10,6 +10,7 @@ export class ProfileComponent implements OnInit {
 
   page: string = "";
   response: any;
+  mydataresponse: any;
   dd: any;
   plug: string = "";
   email: string = "";
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
     }, (err) => {
       console.error(err);
     });
-    //this.getOffers("10");
+    
   }
 
   search(){
@@ -124,7 +125,17 @@ export class ProfileComponent implements OnInit {
       // this.response.forEach(function(element) {
       //   console.log(element);
       // });
-      console.log("Hello world " );
+    });
+  }
+
+  getMyHatData(email){
+    this.http.get('/hatdataplugs'+'?email='+email)
+      .subscribe((mydataresponse) => {
+      this.mydataresponse = mydataresponse;
+      console.log(this.mydataresponse);
+      // this.response.forEach(function(element) {
+      //   console.log(element);
+      // });
     });
   }
 
