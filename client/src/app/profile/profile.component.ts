@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   dd: any;
   plug: string = "";
   email: string = "";
+  todayDate: string = "";
+
   constructor(private auth: AuthenticationService, private http: HttpClient) {}
   
   ngOnInit() {    
@@ -73,6 +75,12 @@ export class ProfileComponent implements OnInit {
         console.log(element);
       });
       console.log("Hello world " );
+      var newDate = new Date();
+      newDate.setDate(newDate.getDate());
+      var today = newDate.toISOString().slice(0, 10);
+      console.log(today);
+
+      //TODO: Compare today's date with deadline on offer
     });
   }
 
