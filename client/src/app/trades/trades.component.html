@@ -34,19 +34,17 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <!-- <th>Num</th> -->
                                 <th>Trades</th>
+                                <th>Value</th>
                             </tr>
                         </thead>
                         <tbody *ngIf="response">
                             <tr *ngFor="let app of response; let i = index">
                                 <!-- <th scope="row">{{ i + 1 }}</th> -->
                                 <td *ngIf="response[i].trade == 'tradeRequested'">{{response[i].buy_data}}</td>
+                                <td *ngIf="response[i].trade == 'tradeRequested'">{{response[i].value}}</td>
                                 <td *ngIf="response[i].trade == 'tradeRequested'">
-                                    <button type="button" class="btn btn-primary" (click)="acceptTrade(response[i].buy_data, details?.email)">Accept</button>
-                                </td>
-                                <td *ngIf="response[i].trade == 'tradeRequested'">
-                                    <button type="button" class="btn btn-danger" (click)="onDelete(i)">Decline</button>
+                                    <button type="button" class="btn btn-primary" (click)="acceptTrade(response[i].buy_data, details?.email)">Continue with the trade</button>
                                 </td>
                             </tr>
                         </tbody>
