@@ -23,13 +23,15 @@ module.exports.register = function(req, res) {
 
     user.name = req.body.name;
     user.email = req.body.email;
+    user.password = req.body.password;
 
     console.log("This is a test " + req.body.name);
 
     console.log("Password ============ " + req.body.password);
 
 
-    user.setPassword(req.body.password);
+    //Hash passwords
+    //user.setPassword(req.body.password);
 
     //TODO: Validation check i.e. Valid email and number
     //Send email (and mobile number, where applicable) after registration
@@ -70,8 +72,8 @@ module.exports.login = function(req, res) {
     passport.authenticate('local', function(err, user, info) {
         var token;
 
-	console.log(user);
-	
+        console.log(user);
+
 
         // If Passport throws/catches an error
         if (err) {

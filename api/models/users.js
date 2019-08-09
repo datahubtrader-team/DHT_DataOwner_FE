@@ -2,9 +2,7 @@ var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
-//TODO: Add url data plug to the User model
-
-//TODO: Add fields from HAT profile to User model
+//TODO: Add PDS username field to this model
 
 var userSchema = new mongoose.Schema({
     email: {
@@ -13,6 +11,10 @@ var userSchema = new mongoose.Schema({
         required: true
     },
     name: {
+        type: String,
+        required: true
+    },
+    password: {
         type: String,
         required: true
     },
