@@ -5,13 +5,13 @@ var jwt = require('jsonwebtoken');
 //TODO: Add PDS username field to this model
 
 var userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         unique: true,
-        required: true
-    },
-    name: {
-        type: String,
         required: true
     },
     password: {

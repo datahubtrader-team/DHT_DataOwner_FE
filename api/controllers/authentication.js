@@ -31,7 +31,7 @@ module.exports.register = function(req, res) {
 
 
     //Hash passwords
-    //user.setPassword(req.body.password);
+    user.setPassword(req.body.password);
 
     //TODO: Validation check i.e. Valid email and number
     //Send email (and mobile number, where applicable) after registration

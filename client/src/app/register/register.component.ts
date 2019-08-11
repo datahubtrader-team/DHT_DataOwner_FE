@@ -21,8 +21,8 @@ export class RegisterComponent {
     this.auth.register(this.credentials).subscribe(() => {
       this.router.navigateByUrl('/profile');
       this.http.post('/data',{
+        "username":this.credentials.name,
         "email":this.credentials.email,
-        "username": this.credentials.name,
         "password":this.credentials.password
       },{headers: {
         //'Access-Control-Allow-Origin':'*',
