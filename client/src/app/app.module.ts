@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
+import { InboxComponent } from './inbox/inbox.component';
 import { TradesComponent } from './trades/trades.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'inbox', component: InboxComponent, canActivate: [AuthGuardService] },
   { path: 'trades', component: TradesComponent, canActivate: [AuthGuardService] }
 ];
 
@@ -26,6 +28,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProfileComponent,
+    InboxComponent,
     TradesComponent,
     LoginComponent,
     RegisterComponent,

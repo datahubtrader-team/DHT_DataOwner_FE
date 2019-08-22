@@ -35,6 +35,7 @@ module.exports.register = function(req, res) {
 
     //TODO: Validation check i.e. Valid email and number
     //Send email (and mobile number, where applicable) after registration
+
     //sendComms.sendCommunication(req.body.email, req.body.name);
 
     user.save(function(err) {
