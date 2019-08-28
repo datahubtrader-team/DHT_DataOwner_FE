@@ -93,12 +93,12 @@
                     <tbody>
                         <tr *ngFor="let app of response; let i=index ">
                             <!-- <th scope="row ">{{ i + 1 }}</th> -->
-                            <td *ngIf="response[i].offerAccepted==null && response[i].value=='0.00'">{{response[i].buy_data}}</td>
-                            <td *ngIf="response[i].offerAccepted==null && response[i].value=='0.00'">{{response[i].value}}</td>
-                            <td *ngIf="response[i].offerAccepted==null && response[i].value=='0.00'">
+                            <td *ngIf="response[i].offerAccepted==null">{{response[i].buy_data}}</td>
+                            <td *ngIf="response[i].offerAccepted==null">{{response[i].value}}</td>
+                            <td *ngIf="response[i].offerAccepted==null">
                                 <button type="button " class="btn btn-primary " (click)="acceptOffer(response[i].buy_data, details?.email); refresh() ">Accept</button>
                             </td>
-                            <td *ngIf="response[i].offerAccepted==null && response[i].value=='0.00'">
+                            <td *ngIf="response[i].offerAccepted==null">
                                 <button type="button " class="btn btn-danger " (click)="onDelete(i) ">Decline</button>
                             </td>
                         </tr>
