@@ -69,7 +69,7 @@
 
         <!--Get offers -->
         <div class="container ">
-            <h2>List of offers {{ details?._id }}</h2>
+            <h2>List of offers</h2>
             <!-- Data: <input type="text " [(ngModel)]="page "> -->
             <button (click)="getOffers(details?.email) " type="button " class="btn btn-primary ">GetOffers</button>
 
@@ -96,10 +96,10 @@
                             <td *ngIf="response[i].offerAccepted==null">{{response[i].buy_data}}</td>
                             <td *ngIf="response[i].offerAccepted==null">{{response[i].value}}</td>
                             <td *ngIf="response[i].offerAccepted==null">
-                                <button type="button " class="btn btn-primary " (click)="acceptOffer(response[i].buy_data, details?.email); refresh() ">Accept</button>
+                                <button type="button " class="btn btn-primary " (click)="acceptOffer(response[i].buy_data, details?.email); refresh() ">Interested</button>
                             </td>
                             <td *ngIf="response[i].offerAccepted==null">
-                                <button type="button " class="btn btn-danger " (click)="onDelete(i) ">Decline</button>
+                                <button type="button " class="btn btn-danger " (click)="onDelete(i) ">Not interested</button>
                             </td>
                         </tr>
                     </tbody>
